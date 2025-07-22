@@ -23,6 +23,7 @@ class PasswordResetRequestAdmin(admin.ModelAdmin):
 class ClassAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'description')
     search_fields = ('name',)
+    filter_horizontal = ('students',)
 
 @admin.register(StudentParent)
 class StudentParentAdmin(admin.ModelAdmin):
