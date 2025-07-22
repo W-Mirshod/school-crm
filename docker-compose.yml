@@ -28,5 +28,12 @@ services:
       - DJANGO_SUPERUSER_USERNAME=admin
       - DJANGO_SUPERUSER_PASSWORD=1234
       - DJANGO_SUPERUSER_EMAIL=admin@gmail.com
+    networks:
+      - default
+      - web
 volumes:
   postgres_data: 
+
+networks:
+  web:
+    external: true 

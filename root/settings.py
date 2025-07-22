@@ -15,11 +15,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-7$-#o_o)(7kfax*&l6$tg6e+p62-2n52a46n86bp2p0-xy($tw'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,7 +33,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,6 +109,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_SUPERUSER_USERNAME = os.environ.get('DJANGO_SUPERUSER_USERNAME', 'admin')
 DEFAULT_SUPERUSER_PASSWORD = os.environ.get('DJANGO_SUPERUSER_PASSWORD', '1234')
 DEFAULT_SUPERUSER_EMAIL = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@example.com')
+
+CORS_ALLOWED_ORIGINS = [
+    "https://aqilli-maktab.w-mirshod.com",
+    "http://localhost:3000",
+]
+CORS_ALLOW_CREDENTIALS = True
+
+SWAGGER_SETTINGS = {
+    'DEFAULT_API_URL': 'https://aqilli-maktab.w-mirshod.com'
+}
 
 @receiver(post_migrate)
 def create_default_superuser(sender, **kwargs):

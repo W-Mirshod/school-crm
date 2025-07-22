@@ -16,6 +16,8 @@ from drf_yasg import openapi
 import string
 from django.utils.crypto import get_random_string
 from dotenv import load_dotenv
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 load_dotenv()
 
 ESKIZ_EMAIL = os.environ.get("ESKIZ_EMAIL")
@@ -60,6 +62,7 @@ def send_sms_via_eskiz(phone, message, code=None):
             return resp.json()
         raise
 
+@method_decorator(csrf_exempt, name='dispatch')
 class RegisterSMSSendCode(APIView):
     @swagger_auto_schema(
         request_body=openapi.Schema(
