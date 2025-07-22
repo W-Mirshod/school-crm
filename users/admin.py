@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import User, VerificationCode, PasswordResetRequest, Class, StudentParent, TeacherClass
+from django.contrib.auth.models import Group
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -34,3 +35,5 @@ class StudentParentAdmin(admin.ModelAdmin):
 class TeacherClassAdmin(admin.ModelAdmin):
     list_display = ('id', 'teacher', 'class_obj')
     search_fields = ('teacher__username', 'class_obj__name')
+
+admin.site.unregister(Group)
