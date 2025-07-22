@@ -13,7 +13,7 @@ A minimal Django-based CRM for school user management with registration, login, 
 
 ### Docker
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 ### Manual
