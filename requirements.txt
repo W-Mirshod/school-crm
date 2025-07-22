@@ -4,3 +4,5 @@ drf-yasg
 django-cors-headers
 PyJWT
 requests 
+gunicorn 
+psycopg2-binary 

@@ -86,7 +86,7 @@ class RefreshToken(APIView):
         except Exception:
             return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
 
-class ParolniTiklash(APIView):
+class PasswordResetRequestSMS(APIView):
     def post(self, request):
         phone = request.data.get('phone')
         code = str(random.randint(100000, 999999))
